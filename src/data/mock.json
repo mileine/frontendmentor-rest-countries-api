@@ -1,0 +1,42 @@
+[{
+  "name": {
+      "common": "France",
+      "official": "French Republic",
+      "nativeName": {
+          "fra": {
+              "official": "République française",
+              "common": "France"
+          }
+      }
+  },
+  "capital": "Paris",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "population": 67391582,
+  "languages": {
+      "fra": "French"
+  },
+  "currencies": {
+      "EUR": {
+          "name": "Euro",
+          "symbol": "€"
+      }
+  },
+  "borderCountries": [
+      "AND",
+      "BEL",
+      "DEU",
+      "ITA",
+      "LUX",
+      "MCO",
+      "ESP",
+      "CHE"
+  ],
+  "tdl": [
+      ".fr"
+  ],
+  "flags": {
+      "svg": "https://flagcdn.com/fr.svg",
+      "alt": "The flag of France is composed of three equal vertical bands of blue, white and red."
+  }
+}]
