@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
-// [HELP!] Importing and replicating code many times - how can I structure the styles files in a smarter way? 🤔
-.country-card {
+
+.header {
   &.light {
     background-color: $app-component-background-light;
     color: $text-light

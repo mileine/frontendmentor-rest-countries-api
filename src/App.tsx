@@ -81,7 +81,7 @@ function App() {
   },[selectedRegion])
 
   return (
-    <div className={appState.themeLight ? 'theme--light': 'theme--dark'}>
+    <div className={`app ${appState.themeLight ? 'theme--light': 'theme--dark'}`}>
       <Header />
       <div className="content">
         <div className="filter-options">

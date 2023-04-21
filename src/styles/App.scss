@@ -3,7 +3,6 @@
     width: 80px;
   }
   padding: 10px;
-  background-color: aliceblue;
   width: 100px;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,6 @@
 
 .header {
   width: 100%;
-  background: aliceblue;
   &__content {
     display: flex;
     justify-content: space-between;

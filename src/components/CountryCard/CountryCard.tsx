@@ -1,13 +1,17 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { CountryType } from '../../context/AppContext';
+import AppContext, { AppContextType } from '../../context/AppContext'
+import './countryCard.scss'
 
 interface Props {
   country: CountryType;
 }
 
 const CountryCard: FC<Props> = ({ country }) => {
+  const { appState }: AppContextType = useContext(AppContext)
+
   return (
-    <div className="country-card">
+    <div className={`country-card ${appState.themeLight? 'light' : 'dark'}`}>
     {
       country?.flags?.svg && 
       // TODO: Add loading for image
