@@ -8,11 +8,12 @@ interface Props {
 }
 
 const CountriesContainer: FC<Props> = ({ countries }) => {
+
   return (
     <div className="countries-container">
       { 
           countries.length > 0? countries.map((country, index) => (
-            <CountryCard country={country} key={index}/>
+            <CountryCard country={country} key={index} />
           )) : ''
       }
     </div>

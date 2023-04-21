@@ -2,6 +2,7 @@ import { FC, useContext } from 'react';
 import { CountryType } from '../../context/AppContext';
 import AppContext, { AppContextType } from '../../context/AppContext'
 import './countryCard.scss'
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   country: CountryType;
@@ -9,9 +10,18 @@ interface Props {
 
 const CountryCard: FC<Props> = ({ country }) => {
   const { appState }: AppContextType = useContext(AppContext)
+  const navigateTo = useNavigate()
+  const handleClick = () => {
+    let code = ""
+    if (country.codes?.cca2 !== undefined) code = country.codes?.cca2
+    else if (country.codes?.cca3 !== undefined) code = country.codes.cca3
+    else if (country.codes?.ccn3 !== undefined) code = country.codes.ccn3
+    else if (country.codes?.cioc !== undefined) code = country.codes.cioc 
+    navigateTo(`/country-details/${code}`)
+  }
 
   return (
-    <div className={`country-card ${appState.themeLight? 'light' : 'dark'}`}>
+    <div className={`country-card ${appState.themeLight? 'light' : 'dark'}`} onClick={handleClick}>
     {
       country?.flags?.svg && 
       // TODO: Add loading for image
