@@ -59,7 +59,7 @@ function App() {
         <h1>Where in the world?</h1>
       </div>
       <div className="content">
-        <input name="search" type="text" placeholder="busque por um país" value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
+        <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
         <div className="countries-container">
           <h3>search result</h3>
           <CountryCard country={country}/>
