@@ -1,5 +1,5 @@
-import { useContext, FC, useState, useEffect } from 'react';
-import AppContext, { AppContextType, CountryType } from '../../context/AppContext'
+import {  FC, useState, useEffect } from 'react';
+import { CountryType } from '../../context/AppContext'
 import './home.scss'
 import { formatCountryData } from '../../utils/utils';
 import { api } from '../../services/api';
@@ -9,7 +9,6 @@ import CountriesContainer from '../../components/CountriesContainer/CountriesCon
 
 const Home: FC = () => {
   const initialState: CountryType = formatCountryData(countryData[0])
-  const { appState }: AppContextType = useContext(AppContext)
   const countriesInitialState: CountryType[] | any[] = []
   const regionOptions: string[] = ["Africa","America","Asia","Europe","Oceania"] 
   // [HELP!] Como faço essa linha funcionar sem ter um initialState? 👇
