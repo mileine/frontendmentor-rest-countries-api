@@ -10,12 +10,15 @@ import CountriesContainer from './components/CountriesContainer/CountriesContain
 function App() {
   const initialState: CountryType = formatCountryData(countryData[0])
   const countriesInitialState: CountryType[] | any[] = []
-  // DUNNO: como faço essa linha funcionar sem ter um initialState? 👇
+  const regionOptions: string[] = ["Africa","America","Asia","Europe","Oceania"] 
+  // [HELP!] Como faço essa linha funcionar sem ter um initialState? 👇
   const [country, setCountry] = useState(() => initialState)
   const [countries, setCountries] = useState(()=> countriesInitialState)
   const [searchTerm, setSearchTerm] = useState("")
+  const [selectedRegion, setSelectedRegion] = useState("")
 
   useEffect(() => {
+    // [HELP!] Como posso organizar jeito melhor essas chamadas fora deste arquivo?
     api
       .get(`/name/brazil`)
       .then(response => setCountry(formatCountryData(response.data[0])))
@@ -53,13 +56,45 @@ function App() {
 
   },[searchTerm])
 
+  useEffect(()=>{
+    if(selectedRegion !== "") {
+      console.log(selectedRegion)
+      api
+      .get(`region/${selectedRegion}`)
+      .then(response => {
+        const updatedList: CountryType[] = []
+        if(selectedRegion === "Asia") console.log(response.data)
+        response.data.map((item: CountryType) => {
+          updatedList.push(formatCountryData(item))
+        })
+        setCountries(updatedList)
+        console.log(response.data)
+      })
+      .catch(err => {
+        console.error("ops! ocorreu um erro " + err)
+      })
+    }
+  },[selectedRegion])
+
   return (
     <>
       <div className="header">
         <h1>Where in the world?</h1>
       </div>
       <div className="content">
-        <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
+        <div className="filter-options">
+          <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
+          <select name="" id="" onChange={(e) => setSelectedRegion(e.currentTarget.value) }>
+            <option>Filter by Region</option>
+            {
+              regionOptions.map((item, index) => (
+                <>
+                  <option key={index} value={item}>{item}</option>
+                </>
+              ))
+            }
+          </select>
+        </div>
         <div className="countries-container">
           <h3>search result</h3>
           <CountryCard country={country}/>
