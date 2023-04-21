@@ -2,6 +2,7 @@ import { CountryType } from "../context/AppContext"
 
 export const formatCountryData = (data: any) => {
   const countryData: CountryType = {
+    id: data.ccn3,
     name: {
       common: data?.name?.common,
       official: data?.name?.official,

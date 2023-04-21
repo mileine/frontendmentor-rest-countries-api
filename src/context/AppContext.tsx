@@ -1,6 +1,7 @@
 import { createContext, PropsWithChildren, useState } from "react";
 
 export type CountryType = {
+  id: string,
   name?: {
     common?: string,
     official?: string,
