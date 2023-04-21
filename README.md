@@ -16,3 +16,4 @@ https://restcountries.com/v3.1/name/{name}
 
 - [Consumindo uma API com React.JS e Axios](https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900)
 - [Using Axios to set request headers](https://blog.logrocket.com/using-axios-set-request-headers/)
+- [A Complete Guide to React Router: Everything You Need to Know](https://ui.dev/react-router-tutorial)
