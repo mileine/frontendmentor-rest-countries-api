@@ -9,23 +9,48 @@ function App() {
   const initialState: CountryType = formatCountryData(countryData[0])
   // DUNNO: como faço essa linha funcionar sem ter um initialState? 👇
   const [country, setCountry] = useState(() => initialState)
+  const [searchTerm, setSearchTerm] = useState("brazil")
 
   useEffect(() => {
     api
-      .get('/name/brazil')
+      .get(`/name/${searchTerm}`)
       .then(response => setCountry(formatCountryData(response.data[0])))
       .catch(err => {
         console.error("ops! ocorreu um erro " + err)
       })
-  },[])
+  },[country, searchTerm])
+
+  const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if(event.key === 'Enter') {
+      api
+      .get(`/name/${searchTerm}`)
+      .then(response => setCountry(formatCountryData(response.data[0])))
+      .catch(err => {
+        console.error("ops! ocorreu um erro " + err)
+      })
+    }
+  }
 
   return (
     <>
-      <h1>Where in the world?</h1>
-      {
-        country.flags.svg && 
-        <img src={country.flags.svg} alt={country.flags.alt} width="50%"/>
-      }
+      <div className="header">
+        <h1>Where in the world?</h1>
+      </div>
+      <div className="content">
+        <input name="search" type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
+        <div className="country-card">
+          {
+            country.flags.svg && 
+            <img className="flag" src={country.flags.svg} alt={country.flags.alt} width="50%"/>
+          }
+          <span>{country.name.common}</span>
+          <span>{country.population}</span>
+          <span>{country.capital}</span>
+        </div>
+      </div>
+      <div className="footer">
+        <span>WIP with ❤️ | A challenge by <a href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca">Frontend Mentor</a></span>
+      </div>
     </>
   )
 }

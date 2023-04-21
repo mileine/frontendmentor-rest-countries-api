@@ -1,0 +1,38 @@
+.country-card {
+  .flag {
+    width: 80px;
+  }
+  padding: 10px;
+  background-color: aliceblue;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-content: center ;
+  justify-items: center;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  input {
+    margin: 10px auto;
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: aliceblue;
+}
