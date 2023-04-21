@@ -79,8 +79,10 @@ function App() {
   return (
     <>
       <div className="header">
-        <h1>Where in the world?</h1>
-        <button>Switch theme</button>
+        <div className="header__content">
+          <h1>Where in the world?</h1>
+          <button>Switch theme</button>
+        </div>
       </div>
       <div className="content">
         <div className="filter-options">
