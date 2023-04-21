@@ -4,11 +4,15 @@ import { formatCountryData } from './utils/utils'
 import { CountryType } from './context/CountriesContext'
 import { api } from './services/api'
 import countryData from './data/mock.json'
+import CountryCard from './components/CountryCard/CountryCard'
+import CountriesContainer from './components/CountriesContainer/CountriesContainer'
 
 function App() {
   const initialState: CountryType = formatCountryData(countryData[0])
+  const countriesInitialState: CountryType[] | any[] = []
   // DUNNO: como faço essa linha funcionar sem ter um initialState? 👇
   const [country, setCountry] = useState(() => initialState)
+  const [countries, setCountries] = useState(()=> countriesInitialState)
   const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
@@ -19,6 +23,7 @@ function App() {
         console.error("ops! ocorreu um erro " + err)
       })
   },[])
+
 
   const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if(event.key === 'Enter') {
@@ -31,6 +36,23 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    api
+      .get(`/alpha?codes=DE,US,BR,IS,AF,AX,AL,DZ`)
+      .then(response => {
+        const updatedList: CountryType[] = []
+        response.data.map((item: CountryType) => {
+          updatedList.push(formatCountryData(item))
+        })
+        setCountries(updatedList)
+        console.log(response.data)
+      })
+      .catch(err => {
+        console.error("ops! ocorreu um erro " + err)
+      })
+
+  },[searchTerm])
+
   return (
     <>
       <div className="header">
@@ -38,16 +60,14 @@ function App() {
       </div>
       <div className="content">
         <input name="search" type="text" placeholder="busque por um país" value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
-        <div className="country-card">
-          {
-            country.flags.svg && 
-            // TODO: Add loading for image
-            <img className="flag" src={country.flags.svg} alt={country.flags.alt} width="50%"/>
-          }
-          <span>{country.name.common}</span>
-          <span>{country.population}</span>
-          <span>{country.capital}</span>
-        </div>
+        <div className="countries-container">
+          <h3>search result</h3>
+          <CountryCard country={country}/>
+        </div>     
+        <h3>view other countries</h3>
+        { countries && 
+          <CountriesContainer countries={countries} />
+        }
       </div>
       <div className="footer">
         <span>WIP with ❤️ | A challenge by <a href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca">Frontend Mentor</a></span>
