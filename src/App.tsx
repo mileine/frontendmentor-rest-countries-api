@@ -83,10 +83,15 @@ function App() {
     <div className={`app ${appState.themeLight ? 'theme--light': 'theme--dark'}`}>
       <Header />
       <div className="content">
+        <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
+        {/* <div className="countries-container"> */}
+          <h3>search result</h3>
+          <CountryCard country={country}/>
+        {/* </div>      */}
         <div className="filter-options">
-          <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
-          {/* TODO: Turn select into component  */}
-          <select name="" onChange={(e) => setSelectedRegion(e.currentTarget.value) }>
+        <h3>view other countries</h3>
+         {/* TODO: Turn select into component  */}
+         <select name="" onChange={(e) => setSelectedRegion(e.currentTarget.value) }>
             <option>Filter by Region</option>
             {
               regionOptions.map((item, index) => (
@@ -97,11 +102,6 @@ function App() {
             }
           </select>
         </div>
-        <div className="countries-container">
-          <h3>search result</h3>
-          <CountryCard country={country}/>
-        </div>     
-        <h3>view other countries</h3>
         { countries && 
           <CountriesContainer countries={countries} />
         }
