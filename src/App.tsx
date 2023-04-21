@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './styles/App.scss'
 import { formatCountryData } from './utils/utils'
 import { CountryType } from './context/AppContext'
@@ -6,11 +6,9 @@ import { api } from './services/api'
 import countryData from './data/mock.json'
 import CountryCard from './components/CountryCard/CountryCard'
 import CountriesContainer from './components/CountriesContainer/CountriesContainer'
-import AppContext, { AppContextType } from './context/AppContext'
 import Header from './components/Header/Header'
 
 function App() {
-  const { appState, toggleTheme }: AppContextType = useContext(AppContext)
   const initialState: CountryType = formatCountryData(countryData[0])
   const countriesInitialState: CountryType[] | any[] = []
   const regionOptions: string[] = ["Africa","America","Asia","Europe","Oceania"] 
@@ -19,7 +17,6 @@ function App() {
   const [countries, setCountries] = useState(()=> countriesInitialState)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedRegion, setSelectedRegion] = useState("")
-  const [themeLight, setThemeLight] = useState(true)
 
   useEffect(() => {
     // [HELP!] Como posso organizar jeito melhor essas chamadas fora deste arquivo?
