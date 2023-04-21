@@ -8,7 +8,7 @@ const SwitchButton: FC = () => {
   return (
     <button className={`switch-button ${appState.themeLight? 'light' : 'dark'}`} onClick={() => toggleTheme()}>
       {/* [DUNNO] How do I use images from folder assets? */}
-      <img className="switch-button__icon" src={appState.themeLight? '/public/icon-light.svg': '/public/icon-dark.svg'} alt=""/>
+      <img className="switch-button__icon" src={appState.themeLight? '/assets/icon-light.svg': '/assets/icon-dark.svg'} alt=""/>
       <span>Dark Theme</span>
     </button>
   );
