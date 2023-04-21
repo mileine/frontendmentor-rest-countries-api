@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import './styles/App.scss'
 import { formatCountryData } from './utils/utils'
 import { CountryType } from './context/AppContext'
@@ -7,9 +7,11 @@ import countryData from './data/mock.json'
 import CountryCard from './components/CountryCard/CountryCard'
 import CountriesContainer from './components/CountriesContainer/CountriesContainer'
 import Header from './components/Header/Header'
+import AppContext, { AppContextType } from './context/AppContext'
 
 function App() {
   const initialState: CountryType = formatCountryData(countryData[0])
+  const { appState }: AppContextType = useContext(AppContext)
   const countriesInitialState: CountryType[] | any[] = []
   const regionOptions: string[] = ["Africa","America","Asia","Europe","Oceania"] 
   // [HELP!] Como faço essa linha funcionar sem ter um initialState? 👇
