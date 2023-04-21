@@ -1,0 +1,15 @@
+.switch-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  &__icon {
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+  }
+  &.dark {
+    color: #ffffff;
+  }
+}
