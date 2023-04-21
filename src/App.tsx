@@ -7,7 +7,8 @@ import countryData from './data/mock.json'
 
 function App() {
   const initialState: CountryType = formatCountryData(countryData[0])
-  const [country, setCountry] = useState(initialState)
+  // DUNNO: como faço essa linha funcionar sem ter um initialState? 👇
+  const [country, setCountry] = useState(() => initialState)
 
   useEffect(() => {
     api
@@ -17,8 +18,6 @@ function App() {
         console.error("ops! ocorreu um erro " + err)
       })
   },[])
-  console.log(initialState)
-  console.log(country)
 
   return (
     <>
@@ -27,7 +26,6 @@ function App() {
         country.flags.svg && 
         <img src={country.flags.svg} alt={country.flags.alt} width="50%"/>
       }
-      
     </>
   )
 }
