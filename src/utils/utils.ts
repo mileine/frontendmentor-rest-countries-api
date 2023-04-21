@@ -1,4 +1,4 @@
-import { CountryType } from "../context/CountriesContext"
+import { CountryType } from "../context/AppContext"
 
 export const formatCountryData = (data: any) => {
   const countryData: CountryType = {

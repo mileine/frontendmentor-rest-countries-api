@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react'
-import './App.scss'
+import { useContext, useEffect, useState } from 'react'
+import './styles/App.scss'
 import { formatCountryData } from './utils/utils'
-import { CountryType } from './context/CountriesContext'
+import { CountryType } from './context/AppContext'
 import { api } from './services/api'
 import countryData from './data/mock.json'
 import CountryCard from './components/CountryCard/CountryCard'
 import CountriesContainer from './components/CountriesContainer/CountriesContainer'
+import AppContext, { AppContextType } from './context/AppContext'
+import Header from './components/Header/Header'
 
 function App() {
+  const { appState, toggleTheme }: AppContextType = useContext(AppContext)
   const initialState: CountryType = formatCountryData(countryData[0])
   const countriesInitialState: CountryType[] | any[] = []
   const regionOptions: string[] = ["Africa","America","Asia","Europe","Oceania"] 
@@ -16,6 +19,7 @@ function App() {
   const [countries, setCountries] = useState(()=> countriesInitialState)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedRegion, setSelectedRegion] = useState("")
+  const [themeLight, setThemeLight] = useState(true)
 
   useEffect(() => {
     // [HELP!] Como posso organizar jeito melhor essas chamadas fora deste arquivo?
@@ -77,13 +81,8 @@ function App() {
   },[selectedRegion])
 
   return (
-    <>
-      <div className="header">
-        <div className="header__content">
-          <h1>Where in the world?</h1>
-          <button>Switch theme</button>
-        </div>
-      </div>
+    <div className={appState.themeLight ? 'theme--light': 'theme--dark'}>
+      <Header />
       <div className="content">
         <div className="filter-options">
           <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
@@ -111,7 +110,7 @@ function App() {
       <div className="footer">
         <span>This is a <a href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca">Frontend Mentor</a> challenge | WIP with lots of ❤️ | <a href="https://github.com/mileine/frontendmentor-rest-countries-api">View on Github</a>  </span>
       </div>
-    </>
+    </div>
   )
 }
 

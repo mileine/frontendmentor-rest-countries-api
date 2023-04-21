@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { CountryType } from '../../context/CountriesContext';
+import { CountryType } from '../../context/AppContext';
 
 interface Props {
   country: CountryType;
