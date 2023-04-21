@@ -1,0 +1,10 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  input {
+    margin: 10px auto;
+  }
+}

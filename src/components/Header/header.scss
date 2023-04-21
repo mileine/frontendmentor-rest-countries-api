@@ -1,6 +1,7 @@
 @import '../../styles/variables.scss';
 
 .header {
+  width: 100%;
   &.light {
     background-color: $app-component-background-light;
     color: $text-light
@@ -9,5 +10,13 @@
   &.dark {
     background-color: $app-component-background-dark;
     color: $text-dark
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px;
   }
 }
