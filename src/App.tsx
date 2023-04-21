@@ -84,7 +84,8 @@ function App() {
       <div className="content">
         <div className="filter-options">
           <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
-          <select name="" id="" onChange={(e) => setSelectedRegion(e.currentTarget.value) }>
+          {/* TODO: Turn select into component  */}
+          <select name="" onChange={(e) => setSelectedRegion(e.currentTarget.value) }>
             <option>Filter by Region</option>
             {
               regionOptions.map((item, index) => (
