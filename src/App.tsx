@@ -9,16 +9,16 @@ function App() {
   const initialState: CountryType = formatCountryData(countryData[0])
   // DUNNO: como faço essa linha funcionar sem ter um initialState? 👇
   const [country, setCountry] = useState(() => initialState)
-  const [searchTerm, setSearchTerm] = useState("brazil")
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     api
-      .get(`/name/${searchTerm}`)
+      .get(`/name/brazil`)
       .then(response => setCountry(formatCountryData(response.data[0])))
       .catch(err => {
         console.error("ops! ocorreu um erro " + err)
       })
-  },[country, searchTerm])
+  },[])
 
   const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if(event.key === 'Enter') {
@@ -37,10 +37,11 @@ function App() {
         <h1>Where in the world?</h1>
       </div>
       <div className="content">
-        <input name="search" type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
+        <input name="search" type="text" placeholder="busque por um país" value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
         <div className="country-card">
           {
             country.flags.svg && 
+            // TODO: Add loading for image
             <img className="flag" src={country.flags.svg} alt={country.flags.alt} width="50%"/>
           }
           <span>{country.name.common}</span>
