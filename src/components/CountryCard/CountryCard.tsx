@@ -17,7 +17,7 @@ const CountryCard: FC<Props> = ({ country }) => {
     else if (country.codes?.cca3 !== undefined) code = country.codes.cca3
     else if (country.codes?.ccn3 !== undefined) code = country.codes.ccn3
     else if (country.codes?.cioc !== undefined) code = country.codes.cioc 
-    navigateTo(`/country-details/${code}`)
+    navigateTo(`/country-details/code/${code}`)
   }
 
   return (

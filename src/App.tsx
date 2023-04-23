@@ -15,7 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/country-details/:id" element={<CountryDetails />} />
+          <Route path="/country-details/code/:id" element={<CountryDetails />} />
+          <Route path="/country-details/name/:name" element={<CountryDetails />} />
         </Routes>
       </BrowserRouter>
       <div className="footer">
