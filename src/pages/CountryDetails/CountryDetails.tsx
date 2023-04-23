@@ -69,7 +69,7 @@ const CountryDetails: FC = () => {
    <div className={`country-details-page ${appState.themeLight? 'light' : 'dark'}`}>
     <div className="card">
       <span>Country details: </span>
-      <span>{country?.name?.common},</span>
+      <span>{country?.name?.common}</span>
 
       { (country?.flags?.svg !== undefined) &&
         <img className='flag' src={country.flags.svg}></img>
