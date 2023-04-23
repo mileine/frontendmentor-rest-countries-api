@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+// [HELP!] Importing and replicating code many times - how can I structure the styles files in a smarter way? 🤔
+
+.country-details-page {
+  margin: 10px auto;
+  &.light {
+    .card {
+      background-color: $app-component-background-light;
+      color: $text-light;
+      .link {
+        color: $text-light;
+      }
+    }
+  }
+
+  &.dark {
+    .card {
+      background-color: $app-component-background-dark;
+      color: $text-dark;
+      .link {
+        color: $text-dark;
+      }
+    }
+  }
+  .card {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .flag {
+    display: block;
+    width: 200px;
+  }
+  &__border-country {
+    margin-right: 8px;
+  }
+}

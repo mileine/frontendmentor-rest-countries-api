@@ -67,25 +67,27 @@ const CountryDetails: FC = () => {
 
   return (
    <div className={`country-details-page ${appState.themeLight? 'light' : 'dark'}`}>
-    <span>Country details: </span>
-    <span>{country?.name?.common},</span>
+    <div className="card">
+      <span>Country details: </span>
+      <span>{country?.name?.common},</span>
 
-    { (country?.name !== undefined) &&
-      <span>{country?.population}</span>
-    }
-
-    {
-      borders && 
-      <div>
-        {
-          borders.map(item => 
-            <Link to={`/country-details/name/${item}`}>
-              <span>{item}</span>
-            </Link>   
-          )
-        }
-      </div>
-    }
+      { (country?.flags?.svg !== undefined) &&
+        <img className='flag' src={country.flags.svg}></img>
+      }
+      
+      {
+        borders && 
+        <div>
+          {
+            borders.map(item => 
+              <Link className='link' to={`/country-details/name/${item}`}>
+                <span className='country-details-page__border-country'>{item}</span>
+              </Link>   
+            )
+          }
+        </div>
+      }
+    </div>
    </div>
   );
 };
