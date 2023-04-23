@@ -3,35 +3,32 @@ import { CountryType } from '../../context/AppContext'
 import './home.scss'
 import { formatCountryData } from '../../utils/utils';
 import { api } from '../../services/api';
-import CountryCard from '../../components/CountryCard/CountryCard';
-import countryData from '../../data/mock.json'
 import CountriesContainer from '../../components/CountriesContainer/CountriesContainer';
 
 const Home: FC = () => {
-  const initialState: CountryType = formatCountryData(countryData[0])
   const countriesInitialState: CountryType[] | any[] = []
   const regionOptions: string[] = ["Africa","America","Asia","Europe","Oceania"] 
   // [HELP!] Como faço essa linha funcionar sem ter um initialState? 👇
-  const [country, setCountry] = useState(() => initialState)
+  const [countriesResult, setCountriesResult] = useState(()=> countriesInitialState)
   const [countries, setCountries] = useState(()=> countriesInitialState)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedRegion, setSelectedRegion] = useState("")
 
-  useEffect(() => {
-    // [HELP!] Como posso organizar jeito melhor essas chamadas fora deste arquivo?
-    api
-      .get(`/name/brazil`)
-      .then(response => setCountry(formatCountryData(response.data[0])))
-      .catch(err => {
-        console.error("ops! ocorreu um erro " + err)
-      })
-  },[])
+  // useEffect(() => {
+  //   // [HELP!] Como posso organizar jeito melhor essas chamadas fora deste arquivo?
+  //   api
+  //     .get(`/name/brazil`)
+  //     .then(response => setCountry(formatCountryData(response.data[0])))
+  //     .catch(err => {
+  //       console.error("ops! ocorreu um erro " + err)
+  //     })
+  // },[])
 
 
   const handleSearch = () => {
     api
     .get(`/name/${searchTerm}`)
-    .then(response => setCountry(formatCountryData(response.data[0])))
+    .then(response => setCountriesResult(response.data.map(item => formatCountryData(item))))
     .catch(err => {
       console.error("ops! ocorreu um erro " + err)
     })
@@ -78,8 +75,12 @@ const Home: FC = () => {
     <div className="home">
       <input name="search" type="text" placeholder="search for a country..." value={searchTerm} onChange={(e)=>setSearchTerm(e.currentTarget.value)} onKeyDown={handleSearch}/>
       {/* <div className="countries-container"> */}
-        <h3>search result</h3>
-        <CountryCard country={country}/>
+        { (countriesResult.length > 0) && 
+        <>
+          <h3>search result</h3>
+          <CountriesContainer countries={countriesResult} />
+        </>
+        }
       {/* </div>      */}
       <div className="filter-options">
       <h3>view other countries</h3>
