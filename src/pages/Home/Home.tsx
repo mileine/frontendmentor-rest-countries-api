@@ -14,21 +14,10 @@ const Home: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedRegion, setSelectedRegion] = useState("")
 
-  // useEffect(() => {
-  //   // [HELP!] Como posso organizar jeito melhor essas chamadas fora deste arquivo?
-  //   api
-  //     .get(`/name/brazil`)
-  //     .then(response => setCountry(formatCountryData(response.data[0])))
-  //     .catch(err => {
-  //       console.error("ops! ocorreu um erro " + err)
-  //     })
-  // },[])
-
-
   const handleSearch = () => {
     api
     .get(`/name/${searchTerm}`)
-    .then(response => setCountriesResult(response.data.map(item => formatCountryData(item))))
+    .then(response => setCountriesResult(response.data.map((item: CountryType) => formatCountryData(item))))
     .catch(err => {
       console.error("ops! ocorreu um erro " + err)
     })
