@@ -12,9 +12,10 @@ https://restcountries.com/v3.1/alpha/{code}
 Country by name:
 https://restcountries.com/v3.1/name/{name}
 
-## Articles
+## Got some help from 👇
 
 - [Consumindo uma API com React.JS e Axios](https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900)
 - [Using Axios to set request headers](https://blog.logrocket.com/using-axios-set-request-headers/)
 - [A Complete Guide to React Router: Everything You Need to Know](https://ui.dev/react-router-tutorial)
 - [How to Import SVGs in a React and Vite app](https://www.freecodecamp.org/news/how-to-import-svgs-in-react-and-vite/)
+- [import svg as component in react without typescript reference](https://stackoverflow.com/questions/72316628/import-svg-as-component-in-react-without-typescript-reference)
