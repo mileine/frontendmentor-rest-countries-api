@@ -28,15 +28,13 @@ const Home: FC = () => {
   },[])
 
 
-  const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if(event.key === 'Enter') {
-      api
-      .get(`/name/${searchTerm}`)
-      .then(response => setCountry(formatCountryData(response.data[0])))
-      .catch(err => {
-        console.error("ops! ocorreu um erro " + err)
-      })
-    }
+  const handleSearch = () => {
+    api
+    .get(`/name/${searchTerm}`)
+    .then(response => setCountry(formatCountryData(response.data[0])))
+    .catch(err => {
+      console.error("ops! ocorreu um erro " + err)
+    })
   }
 
   useEffect(() => {
