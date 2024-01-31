@@ -82,7 +82,7 @@ const CountryDetails: FC = () => {
         <div>{country?.population}</div>
         <div>{country?.region}</div>
         <div>{country?.capital}</div>      
-        <div>{Object.values(country?.languages)}</div>      
+           
         {
           borders && 
           <div>
