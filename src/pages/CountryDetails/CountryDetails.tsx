@@ -1,7 +1,9 @@
-import { FC, useContext, useEffect, useState } from 'react';
-import AppContext, { AppContextType, CountryType } from '../../context/AppContext'
 import './countryDetails.scss'
+
+import AppContext, { AppContextType, CountryType } from '../../context/AppContext'
+import { FC, useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+
 import { api } from '../../services/api';
 import { formatCountryData } from '../../utils/utils';
 
@@ -65,28 +67,35 @@ const CountryDetails: FC = () => {
     }
   },[country.borderCountries])
 
+  
+
   return (
    <div className={`country-details-page ${appState.themeLight? 'light' : 'dark'}`}>
     <div className="card">
-      <span>Country details: </span>
-      <span>{country?.name?.common}</span>
-
-      { (country?.flags?.svg !== undefined) &&
-        <img className='flag' src={country.flags.svg}></img>
-      }
-      
-      {
-        borders && 
-        <div>
-          {
-            borders.map(item => 
-              <Link className='link' to={`/country-details/name/${item}`}>
-                <span className='country-details-page__border-country'>{item}</span>
-              </Link>   
-            )
-          }
-        </div>
-      }
+      <div>
+        { (country?.flags?.svg !== undefined) &&
+          <img className='flag' src={country.flags.svg}></img>
+        }
+      </div>
+      <div>
+        <h2>{country?.name?.common}</h2>
+        <div>{country?.population}</div>
+        <div>{country?.region}</div>
+        <div>{country?.capital}</div>      
+        <div>{Object.values(country?.languages)}</div>      
+        {
+          borders && 
+          <div>
+            {
+              borders.map(item => 
+                <Link className='link' to={`/country-details/name/${item}`}>
+                  <span className='country-details-page__border-country'>{item}</span>
+                </Link>   
+              )
+            }
+          </div>
+        }
+      </div>
     </div>
    </div>
   );

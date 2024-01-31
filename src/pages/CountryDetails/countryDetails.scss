@@ -5,6 +5,7 @@
   margin: 10px auto;
   &.light {
     .card {
+      display: flex;
       background-color: $app-component-background-light;
       color: $text-light;
       .link {
