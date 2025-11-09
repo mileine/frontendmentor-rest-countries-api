@@ -18,41 +18,41 @@ function App() {
   }, [appState.themeLight])
 
   return (
-    <div className="min-h-screen" style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
-      <Header />
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="min-h-screen" style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/country-details/code/:id" element={<CountryDetails />} />
           <Route path="/country-details/name/:name" element={<CountryDetails />} />
         </Routes>
-      </BrowserRouter>
-      <footer 
-        className="py-6 text-center text-xs transition-colors"
-        style={{
-          backgroundColor: appState.themeLight ? 'hsl(0, 0%, 98%)' : 'hsl(207, 26%, 17%)',
-          color: appState.themeLight ? 'hsl(200, 15%, 8%)' : 'hsl(0, 0%, 100%)'
-        }}
-      >
-        <span>
-          This is a{' '}
-          <a 
-            href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca"
-            className="font-semibold hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Frontend Mentor challenge
-          </a>{' '}
-         challenge | <a
-            href="https://github.com/mileine/frontendmentor-rest-countries-api"
-            className="font-semibold hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >View on github</a>          
-        </span>
-      </footer>
-    </div>
+        <footer 
+          className="py-6 text-center text-xs transition-colors"
+          style={{
+            backgroundColor: appState.themeLight ? 'hsl(0, 0%, 98%)' : 'hsl(207, 26%, 17%)',
+            color: appState.themeLight ? 'hsl(200, 15%, 8%)' : 'hsl(0, 0%, 100%)'
+          }}
+        >
+          <span>
+            This is a{' '}
+            <a 
+              href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca"
+              className="font-semibold hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Frontend Mentor challenge
+            </a>{' '}
+           challenge | <a
+              href="https://github.com/mileine/frontendmentor-rest-countries-api"
+              className="font-semibold hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >View on github</a>          
+          </span>
+        </footer>
+      </div>
+    </BrowserRouter>
   )
 }
 
