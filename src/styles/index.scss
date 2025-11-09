@@ -1,14 +1,36 @@
-@import 'variables';
-@import 'theme';
+@import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'League Spartan', sans-serif;
-  font-family: 'Nunito', sans-serif;
+@theme {
+  /* Dark Mode Colors */
+  --color-dm-elements: hsl(209, 23%, 22%);
+  --color-dm-bg: hsl(207, 26%, 17%);
+  
+  /* Light Mode Colors */
+  --color-lm-text: hsl(200, 15%, 8%);
+  --color-lm-input: hsl(0, 0%, 52%);
+  --color-lm-bg: hsl(0, 0%, 98%);
+  --color-lm-elements: hsl(0, 0%, 100%);
+  
+  /* Font Family */
+  --font-family-nunito: 'Nunito Sans', sans-serif;
+  
+  /* Shadows */
+  --shadow-light: 0 2px 9px rgba(0, 0, 0, 0.05);
+  --shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-ul {
-  list-style: none;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--font-family-nunito);
+  }
+  
+  ul {
+    list-style: none;
+  }
 }

@@ -1,19 +1,29 @@
 import { useContext, FC } from 'react';
 import AppContext, { AppContextType } from '../../context/AppContext'
-import './header.scss'
 import SwitchButton from '../SwitchButton/SwitchButton';
 
 const Header: FC = () => {
   const { appState }: AppContextType = useContext(AppContext)
 
   return (
-    <div className={`header ${appState.themeLight? 'light' : 'dark'}`}>
-      <div className="header__content">
-        <h1>Where in the world?</h1>
-        {/* <button onClick={() => toggleTheme()}>Switch theme</button> */}
+    <header 
+      className="w-full shadow-light dark:shadow-dark transition-colors"
+      style={{ 
+        backgroundColor: appState.themeLight ? 'hsl(0, 0%, 100%)' : 'hsl(209, 23%, 22%)'
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+        <h1 
+          className="text-sm sm:text-base md:text-xl lg:text-2xl font-extrabold"
+          style={{ 
+            color: appState.themeLight ? 'hsl(200, 15%, 8%)' : 'hsl(0, 0%, 100%)'
+          }}
+        >
+          Where in the world?
+        </h1>
         <SwitchButton />
       </div>
-  </div>
+    </header>
   );
 };
 
